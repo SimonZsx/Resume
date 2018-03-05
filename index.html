@@ -1,0 +1,899 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Backnode</title>
+    <meta charset="UTF-8">
+    <meta name="generator" content="Silex v2.2.7">
+    <!-- leave this for stats -->
+    <script type="text/javascript" src="//editor.silex.me/static/2.7/jquery.js" data-silex-static=""></script>
+    <script type="text/javascript" src="//editor.silex.me/static/2.7/jquery-ui.js" data-silex-static=""></script>
+
+    <script type="text/javascript" src="//editor.silex.me/static/2.7/pageable.js" data-silex-static=""></script>
+    <script type="text/javascript" src="//editor.silex.me/static/2.7/front-end.js" data-silex-static=""></script>
+    <!-- Normalize -->
+    <link href="//editor.silex.me/static/2.7/normalize.css" rel="stylesheet" data-silex-static="">
+    <!-- Silex style -->
+    <link href="//editor.silex.me/static/2.7/front-end.css" rel="stylesheet" data-silex-static="">
+
+    <style type="text/css" class="silex-style">
+        /*
+        	Here are the CSS styles of your website.
+        
+        	Bellow are some examples, like the styles which you can apply to your text in the text editor.
+        
+        	See this page for help on CSS
+        	https://developer.mozilla.org/en-US/docs/Web/Guide/CSS/Getting_started
+        
+        	In the advanced "Apollo" mode, you will be able to add CSS classes to Silex elements,
+        	and then apply a CSS style to it here.
+        */
+        /* define a style for Title, Headings and Normal texts */
+        
+        .title,
+        .heading1,
+        .heading2,
+        .heading3,
+        .normal {
+            color: #666666;
+            font-family: verdana, arial;
+            margin: 0;
+        }
+        /* title style */
+        
+        .title {
+            font-size: 45px;
+        }
+        /* special classes, dedicace to leo */
+        
+        body {
+            padding: 0;
+        }
+        
+        .editable-style.full-width {
+            width: 2000px;
+            left: 0;
+        }
+        
+        .editable-style.centered {
+            left: 50%;
+            width: 980px;
+            margin-left: -490px;
+            position: absolute;
+        }
+        
+        .editable-style.right-aligned {
+            right: 0;
+            left: auto;
+        }
+        
+        .silex-runtime .editable-style.full-width {
+            width: 100%;
+        }
+        /* website styles */
+        
+        .normal,
+        .heading1 {
+            font-weight: normal;
+            color: white;
+        }
+        
+        .heading2 {
+            font-weight: normal;
+            color: black;
+            color: white;
+        }
+        
+        .page-content .heading1 {
+            font-size: 36px;
+            font-family: sans-serif;
+            color: #3D3D3D;
+            font-weight: normal;
+        }
+        
+        .page-content .normal {
+            color: #818181;
+        }
+        /* NAV */
+        
+        .nav div {
+            color: white;
+            font-family: sans-serif;
+            font-size: 16px;
+            font-weight: normal;
+        }
+        
+        .nav a.page-link-active {
+            font-weight: bold;
+            border-bottom: 4px solid #34b399;
+        }
+        /* override default links style */
+        
+        .editable-style.nav a:hover {
+            text-decoration: initial;
+        }
+        /* prevent the body to have a margin on top in mobile version */
+        
+        body {
+            padding-top: 0 !important;
+        }
+    </style>
+    <script type="text/javascript" class="silex-script"></script>
+
+    <style class="silex-inline-styles" type="text/css">
+        .silex-id-1439555806958-90 {
+            cursor: auto;
+            background-color: rgb(255, 255, 255);
+        }
+        
+        .silex-id-1484951384737-1 {
+            top: 0px;
+            left: 0px;
+            background-image: url('../../../../../../../libs/templates/silex-templates/online-service/assets/background_header.jpg');
+            background-position: center right;
+            min-width: 945px;
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-color: rgba(65, 73, 96, 1);
+            background-attachment: scroll;
+        }
+        
+        .silex-id-1484951384736-0 {
+            min-height: 693px;
+            background-color: transparent;
+            width: 945px;
+            top: 15px;
+            left: 654px;
+        }
+        
+        @media only screen and (max-width: 480px),
+        only screen and (max-device-width: 480px) {
+            .silex-id-1484951384736-0 {
+                min-height: 302px;
+                top: 168px;
+                left: 12px;
+                width: 445px;
+            }
+        }
+        
+        .silex-id-1439555803858-60 {
+            width: 945px;
+            top: 26px;
+            left: -1px;
+            background-color: transparent;
+            min-height: 47px;
+        }
+        
+        .silex-id-1439555803757-59 {
+            width: 150px;
+            top: 15px;
+            left: 471px;
+            background-color: transparent;
+            min-height: 22px;
+        }
+        
+        .silex-id-1439555803655-58 {
+            width: 150px;
+            top: 15px;
+            left: 636px;
+            background-color: transparent;
+            min-height: 23px;
+        }
+        
+        .silex-id-1439555803551-57 {
+            width: 150px;
+            top: 15px;
+            left: 794px;
+            background-color: transparent;
+            min-height: 23px;
+        }
+        
+        .silex-id-1439555803032-54 {
+            width: 945px;
+            top: 253px;
+            left: 0px;
+            background-color: transparent;
+            min-height: 87px;
+        }
+        
+        @media only screen and (max-width: 480px),
+        only screen and (max-device-width: 480px) {
+            .silex-id-1439555803032-54 {
+                top: 61px;
+                left: 11px;
+                width: 423px;
+                min-height: 52px;
+            }
+        }
+        
+        .silex-id-1439555803447-56 {
+            width: 242px;
+            top: 460px;
+            left: 355px;
+            background-color: rgb(43, 148, 126);
+            border-top-left-radius: 5px;
+            border-top-right-radius: 5px;
+            border-bottom-right-radius: 5px;
+            border-bottom-left-radius: 5px;
+            min-height: 46px;
+        }
+        
+        @media only screen and (max-width: 480px),
+        only screen and (max-device-width: 480px) {
+            .silex-id-1439555803447-56 {
+                top: 496px;
+                left: 11px;
+                width: 423px;
+                min-height: 46px;
+            }
+        }
+        
+        .silex-id-1439555803309-55 {
+            width: 215px;
+            top: 4px;
+            left: 16px;
+            background-color: transparent;
+            min-height: 33px;
+        }
+        
+        @media only screen and (max-width: 480px),
+        only screen and (max-device-width: 480px) {
+            .silex-id-1439555803309-55 {
+                top: 13px;
+                left: 104px;
+                width: 215px;
+                min-height: 20px;
+            }
+        }
+        
+        .silex-id-1484951794946-5 {
+            top: 591px;
+            left: 0px;
+            min-width: 945px;
+        }
+        
+        @media only screen and (max-width: 480px),
+        only screen and (max-device-width: 480px) {
+            .silex-id-1484951794946-5 {
+                top: 535px;
+                left: 0px;
+            }
+        }
+        
+        .silex-id-1484951794946-4 {
+            min-height: 1675px;
+            background-color: transparent;
+            top: 15px;
+            left: 331px;
+            width: 945px;
+        }
+        
+        @media only screen and (max-width: 480px),
+        only screen and (max-device-width: 480px) {
+            .silex-id-1484951794946-4 {
+                min-height: 1689px;
+            }
+        }
+        
+        .silex-id-1439555805723-78 {
+            width: 400px;
+            top: 58px;
+            left: 47px;
+            background-color: transparent;
+            min-height: 178px;
+        }
+        
+        @media only screen and (max-width: 480px),
+        only screen and (max-device-width: 480px) {
+            .silex-id-1439555805723-78 {
+                top: 2961px;
+                left: 50px;
+                width: 400px;
+                min-height: 119px;
+            }
+        }
+        
+        .silex-id-1439555805211-73 {
+            width: 400px;
+            top: 323px;
+            left: 526px;
+            background-color: transparent;
+            min-height: 146px;
+        }
+        
+        @media only screen and (max-width: 480px),
+        only screen and (max-device-width: 480px) {
+            .silex-id-1439555805211-73 {
+                left: 19px;
+                top: 500px;
+                width: 400px;
+                min-height: 238px;
+            }
+        }
+        
+        .silex-id-1520245929328-0 {
+            width: 400px;
+            top: 572px;
+            left: 48px;
+            background-color: transparent;
+            min-height: 146px;
+        }
+        
+        .silex-id-1520246666548-1 {
+            width: 400px;
+            top: 833px;
+            left: 508px;
+            background-color: transparent;
+            min-height: 146px;
+        }
+        
+        .silex-id-1520247240485-2 {
+            width: 400px;
+            top: 1248px;
+            left: 27px;
+            background-color: transparent;
+            min-height: 146px;
+        }
+        
+        .silex-id-1484952760464-11 {
+            min-height: 100px;
+            top: 439px;
+            left: 0px;
+        }
+        
+        .silex-id-1484952760463-10 {
+            min-height: 585px;
+            background-color: transparent;
+        }
+        
+        .silex-id-1484952775498-12 {
+            min-height: 288px;
+            width: 877px;
+            top: 58px;
+            left: 33px;
+        }
+        
+        .silex-id-1484951945204-7 {
+            min-height: 100px;
+            top: 4107px;
+            left: 0px;
+            background-color: rgba(65, 73, 96, 1);
+        }
+        
+        @media only screen and (max-width: 480px),
+        only screen and (max-device-width: 480px) {
+            .silex-id-1484951945204-7 {
+                top: 2052px;
+                left: 0px;
+            }
+        }
+        
+        .silex-id-1484951945204-6 {
+            min-height: 482px;
+            background-color: transparent;
+        }
+        
+        @media only screen and (max-width: 480px),
+        only screen and (max-device-width: 480px) {
+            .silex-id-1484951945204-6 {
+                min-height: 676px;
+            }
+        }
+        
+        .silex-id-1439555806543-86 {
+            width: 980px;
+            top: 32px;
+            left: -17px;
+            background-color: transparent;
+            min-height: 57px;
+        }
+        
+        .silex-id-1439555806441-85 {
+            width: 302px;
+            top: 259px;
+            left: 17px;
+            background-color: transparent;
+            min-height: 116px;
+        }
+        
+        .silex-id-1439555806030-81 {
+            width: 265px;
+            top: 258px;
+            left: 360px;
+            background-color: transparent;
+            min-height: 190px;
+        }
+        
+        @media only screen and (max-width: 480px),
+        only screen and (max-device-width: 480px) {
+            .silex-id-1439555806030-81 {
+                top: 173px;
+                left: 158px;
+                width: 265px;
+                min-height: 164px;
+            }
+        }
+        
+        .silex-id-1439555805927-80 {
+            width: 302px;
+            top: 257px;
+            left: 647px;
+            background-color: transparent;
+            min-height: 190px;
+        }
+        
+        @media only screen and (max-width: 480px),
+        only screen and (max-device-width: 480px) {
+            .silex-id-1439555805927-80 {
+                top: 363px;
+                left: 13px;
+                width: 302px;
+                min-height: 152px;
+            }
+        }
+        
+        .silex-id-1484952021004-9 {
+            min-height: 100px;
+            top: 4107px;
+            left: 0px;
+            background-color: rgba(0, 0, 0, 1);
+        }
+        
+        .silex-id-1484952021003-8 {
+            min-height: 108px;
+            background-color: transparent;
+        }
+        
+        .silex-id-1439555802805-52 {
+            width: 855px;
+            top: 24px;
+            left: 45px;
+            background-color: transparent;
+            min-height: 55px;
+        }
+    </style>
+
+
+
+
+
+
+
+
+
+
+
+    <script type="text/javascript" class="silex-json-styles">
+        [{"desktop":{"silex-id-1439555806958-90":{"cursor":"auto","background-color":"rgb(255, 255, 255)"},"silex-id-1439555806749-88":{"width":"100px","top":"1698px","left":"0px","background-color":"rgb(65, 73, 96)","min-height":"501px"},"silex-id-1439555806648-87":{"width":"980px","top":"18px","left":"1002px","background-color":"transparent","min-height":"461px"},"silex-id-1439555806543-86":{"width":"980px","top":"32px","left":"-17px","background-color":"transparent","min-height":"57px"},"silex-id-1439555806441-85":{"width":"302px","top":"259px","left":"17px","background-color":"transparent","min-height":"116px"},"silex-id-1439555806030-81":{"width":"265px","top":"258px","left":"360px","background-color":"transparent","min-height":"190px"},"silex-id-1439555805927-80":{"width":"302px","top":"257px","left":"647px","background-color":"transparent","min-height":"190px"},"silex-id-1439555805825-79":{"width":"980px","top":"468px","left":"510px","background-color":"transparent","min-height":"1193px"},"silex-id-1439555805723-78":{"width":"400px","top":"58px","left":"47px","background-color":"transparent","min-height":"178px"},"silex-id-1439555805518-76":{"width":"215px","top":"17px","left":"14px","background-color":"transparent","min-height":"20px"},"silex-id-1439555805211-73":{"width":"400px","top":"323px","left":"526px","background-color":"transparent","min-height":"146px"},"silex-id-1439555804907-70":{"width":"215px","top":"16px","left":"14px","background-color":"transparent","min-height":"28px"},"silex-id-1439555804395-65":{"width":"21px","top":"10px","left":"466px","opacity":"0.8","min-height":"19px"},"silex-id-1439555804293-64":{"width":"25px","top":"7px","left":"424px","opacity":"0.8","min-height":"25px"},"silex-id-1439555804192-63":{"width":"13.3333px","top":"9px","left":"386px","opacity":"0.8","min-height":"22px"},"silex-id-1439555803858-60":{"width":"945px","top":"26px","left":"-1px","background-color":"transparent","min-height":"47px"},"silex-id-1439555803757-59":{"width":"150px","top":"15px","left":"471px","background-color":"transparent","min-height":"22px"},"silex-id-1439555803655-58":{"width":"150px","top":"15px","left":"636px","background-color":"transparent","min-height":"23px"},"silex-id-1439555803551-57":{"width":"150px","top":"15px","left":"794px","background-color":"transparent","min-height":"23px"},"silex-id-1439555803447-56":{"width":"242px","top":"460px","left":"355px","background-color":"rgb(43, 148, 126)","border-top-left-radius":"5px","border-top-right-radius":"5px","border-bottom-right-radius":"5px","border-bottom-left-radius":"5px","min-height":"46px"},"silex-id-1439555803309-55":{"width":"215px","top":"4px","left":"16px","background-color":"transparent","min-height":"33px"},"silex-id-1439555803032-54":{"width":"945px","top":"253px","left":"0px","background-color":"transparent","min-height":"87px"},"silex-id-1439555802805-52":{"width":"855px","top":"24px","left":"45px","background-color":"transparent","min-height":"55px"},"silex-id-1484951384736-0":{"min-height":"693px","background-color":"transparent","width":"945px","top":"15px","left":"654px"},"silex-id-1484951384737-1":{"top":"0px","left":"0px","background-image":"url('../../../../../../../libs/templates/silex-templates/online-service/assets/background_header.jpg')","background-position":"center right","min-width":"945px","background-size":"cover","background-repeat":"no-repeat","background-color":"rgba(65,73,96,1)","background-attachment":"scroll"},"silex-id-1484951659147-2":{"min-height":"100px","background-color":"transparent"},"silex-id-1484951794946-4":{"min-height":"1675px","background-color":"transparent","top":"15px","left":"331px","width":"945px"},"silex-id-1484951794946-5":{"top":"591px","left":"0px","min-width":"945px"},"silex-id-1484951945204-6":{"min-height":"482px","background-color":"transparent"},"silex-id-1484951945204-7":{"min-height":"100px","top":"4107px","left":"0px","background-color":"rgba(65,73,96,1)"},"silex-id-1484952021003-8":{"min-height":"108px","background-color":"transparent"},"silex-id-1484952021004-9":{"min-height":"100px","top":"4107px","left":"0px","background-color":"rgba(0,0,0,1)"},"silex-id-1484952760463-10":{"min-height":"585px","background-color":"transparent"},"silex-id-1484952760464-11":{"min-height":"100px","top":"439px","left":"0px"},"silex-id-1484952775498-12":{"min-height":"288px","width":"877px","top":"58px","left":"33px"},"silex-id-1492777118376-4":{"width":"","background-color":"","min-height":"37px"},"silex-id-1520245929328-0":{"width":"400px","top":"572px","left":"48px","background-color":"transparent","min-height":"146px"},"silex-id-1520246666548-1":{"width":"400px","top":"833px","left":"508px","background-color":"transparent","min-height":"146px"},"silex-id-1520247240485-2":{"width":"400px","top":"1248px","left":"27px","background-color":"transparent","min-height":"146px"}},"mobile":{"silex-id-1484951794946-5":{"top":"535px","left":"0px"},"silex-id-1484951794946-4":{"min-height":"1689px"},"silex-id-1439555805723-78":{"top":"2961px","left":"50px","width":"400px","min-height":"119px"},"silex-id-1484951384736-0":{"min-height":"302px","top":"168px","left":"12px","width":"445px"},"silex-id-1439555803032-54":{"top":"61px","left":"11px","width":"423px","min-height":"52px"},"silex-id-1439555803447-56":{"top":"496px","left":"11px","width":"423px","min-height":"46px"},"silex-id-1439555803309-55":{"top":"13px","left":"104px","width":"215px","min-height":"20px"},"silex-id-1484951384737-1":{"background-image":""},"silex-id-1439555805927-80":{"top":"363px","left":"13px","width":"302px","min-height":"152px"},"silex-id-1439555806030-81":{"top":"173px","left":"158px","width":"265px","min-height":"164px"},"silex-id-1484951945204-7":{"top":"2052px","left":"0px"},"silex-id-1484951945204-6":{"min-height":"676px"},"silex-id-1439555805211-73":{"left":"19px","top":"500px","width":"400px","min-height":"238px"}},"componentData":{}}]
+    </script>
+
+    <meta name="publicationPath" content="/api/1.0/github/exec/put//silex-templates/wip/online-service">
+
+
+
+
+    <meta name="website-width" content="945">
+    <style type="text/css" class="silex-style-settings">
+        .website-width {
+            width: 945px;
+        }
+    </style>
+
+
+
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2.2" data-silex-viewport="">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <style id="current-page-style">
+        .page-use-backnode {
+            display: inherit;
+        }
+    </style>
+    <link href="http://fonts.googleapis.com/css?family=Codystar:300,400" rel="stylesheet" type="text/css" class="silex-custom-font">
+    <!-- Silex HEAD tag do not remove -->
+    <!-- End of Silex HEAD tag do not remove -->
+</head>
+
+<body class="silex-id-1439555806958-90 enable-mobile silex-runtime" data-silex-type="container" data-silex-id="silex-id-1439555806958-90">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class="silex-pages">
+        <div data-silex-type="image" data-silex-id="silex-id-hamburger-menu" class="menu-button editable-style silex-id-hamburger-menu image-element page-page-1 paged-element prevent-draggable prevent-resizable hide-on-mobile"><img alt="open mobile menu" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAoCAYAAAC8cqlMAAAB5UlEQVR42u2ZPWvCUBSGM+UfFO3e3dLu/QN+oKj4EUXRQREEJYgoiCAu6qCogyDo7iJ21UUaKqEgCC4iiEMGB3UVgsnpTWj/wfVK2nvhGbKEPJyT996TMMzPGg6H5mKx+GgkyuWyeTQasb8OTDwef4tEIp8+n+/LYIjJZJJHQiwzm81M6OLDarWqNpsNjEYgEJCy2ewT0+/3TagighElNFAnQT6ft1ARKkJFqMgfFvF4PFpuEwFtdrcRqVarIIoirFYrIiyXSxiPx+B2u/GJBINBuF6vQHopigK1Wg2fCMdxcLlciIuoqgqNRgOfiN1uB3Qwg91uB8fjkQiHwwEmkwne1qLxS0VuKKJle71eh06nQ4Rmswk8z+MVcTqdsNlsQJZlotF7Pp8hk8ngE4lGo/qN7xG/vV4Pb0Xm8zlxkdPpBGgMx/+yJxIJKBQKRMjlcuBwOGhq/Q+RcDgMsViMCFrAuFwu/CKDwQC22y1IkkSE/X4PgiDo+xc2Ea0S9zjGa/Hb7Xbxifj9fj0K7yFSqVTwtlY6nYbpdKpPiSRYLBbQarX0PYymFhWhIlSEilCRW6GdyUqlkoVZr9dsKpXiOY6TtW+7BkNBz/7ebrcf9L+6Xq+XRYPMMyrTq5EIhUIvaAjTJb4BBNQ2yhnth0wAAAAASUVORK5CYII="
+                class="silex-element-content"></div><a id="page-use-backnode" data-silex-type="page" class="page-element page-link-active">Use Backnode</a><a class="page-element" data-silex-type="page" id="page-documentation">Documentation</a><a class="page-element"
+            data-silex-type="page" id="page-learn-backnode">Learn Backnode</a></div>
+
+
+
+
+
+
+    <div data-silex-type="container" class="prevent-draggable container-element editable-style silex-id-1484951384737-1 section-element" data-silex-id="silex-id-1484951384737-1">
+
+
+
+
+        <div data-silex-type="container" class="editable-style silex-element-content website-width silex-id-1484951384736-0 silex-container-content container-element prevent-draggable" data-silex-id="silex-id-1484951384736-0">
+
+
+            <div class="editable-style container-element nav silex-id-1439555803858-60 hide-on-mobile" data-silex-type="container" data-silex-id="silex-id-1439555803858-60">
+
+
+
+
+                <div class="editable-style text-element silex-id-1439555803757-59" data-silex-type="text" data-silex-id="silex-id-1439555803757-59">
+                    <div class="silex-element-content normal">
+                        <div style="text-align: center;">参与方式</div>
+                        <audio controls="controls" style="display: none;"></audio><audio controls="controls" style="display: none;"></audio></div>
+                </div>
+                <div class="editable-style text-element silex-id-1439555803655-58" data-silex-type="text" data-silex-id="silex-id-1439555803655-58">
+                    <div class="silex-element-content normal">
+                        <div style="text-align: center;">游戏说明</div>
+                        <audio controls="controls" style="display: none;"></audio></div>
+                </div>
+                <div class="editable-style text-element silex-id-1439555803551-57" data-silex-type="text" data-silex-id="silex-id-1439555803551-57">
+                    <div class="silex-element-content normal">
+                        <div style="text-align: center;">开始游戏</div>
+                        <audio controls="controls" style="display: none;"></audio></div>
+                </div>
+            </div>
+
+            <div class="editable-style text-element silex-id-1439555803032-54" data-silex-type="text" data-silex-id="silex-id-1439555803032-54">
+                <div class="silex-element-content normal">
+                    <h1 style="text-align: center;" class="heading1">CRYPTO&nbsp;
+                        <font color="#ff0000"> </font>JX3</h1>
+                    <div style="text-align: center;"><b style="">第一款基于区块链智能合约的剑网三衍生游戏</b></div>
+                    <audio controls="controls" style="display: none;"></audio><audio controls="controls" style="display: none;"></audio><audio controls="controls" style="display: none;"></audio><audio controls="controls" style="display: none;"></audio>
+                    <audio
+                        controls="controls" style="display: none;"></audio><audio controls="controls" style="display: none;"></audio><audio controls="controls" style="display: none;"></audio></div>
+            </div>
+            <div class="editable-style container-element silex-id-1439555803447-56" data-silex-type="container" data-silex-id="silex-id-1439555803447-56" data-silex-href="#!page-documentation">
+
+                <div class="editable-style text-element silex-id-1439555803309-55" data-silex-type="text" data-silex-id="silex-id-1439555803309-55" style="">
+                    <div class="silex-element-content normal">
+                        <div style="text-align: center;"><span style="color: rgb(255, 255, 255);"><font face="Codystar" size="6"><b style="">开始游戏</b></font></span></div>
+                        <audio controls="controls" style="display: none;"></audio><audio controls="controls" style="display: none;"></audio><audio controls="controls" style="display: none;"></audio><audio controls="controls" style="display: none;"></audio>
+                        <audio
+                            controls="controls" style="display: none;"></audio><audio controls="controls" style="display: none;"></audio></div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+    <div data-silex-type="container" class="prevent-draggable container-element editable-style silex-id-1484951794946-5 section-element page-use-backnode paged-element" data-silex-id="silex-id-1484951794946-5">
+        <div data-silex-type="container" class="editable-style silex-element-content website-width silex-id-1484951794946-4 silex-container-content container-element prevent-draggable" data-silex-id="silex-id-1484951794946-4">
+
+
+
+
+
+
+
+
+
+
+
+            <div class="editable-style text-element silex-id-1439555805723-78" data-silex-type="text" data-silex-id="silex-id-1439555805723-78" style="">
+                <div class="silex-element-content normal">
+                    <h3 class="heading3"></h3>
+                    <h1 class="heading1">
+                        <font color="#000000">收藏剑网三的世界</font>
+                    </h1>
+                    <div>
+                        <font color="#000000">通过区块链交易，拥有剑侠情缘三的门派、NPC、服务器等独有物品（Items）。每个物品只可以被一个人拥有，每次购买行为都将永久提升物品的价格（基于ETH）。物品拥有者将在区块链构成的剑网三衍生游戏中，获得更多的收益（参见线路图）。</font>
+                        <font color="#ff0000">所有的交易行为和收益都发生在玩家之间，开发者只会收取玩家收益（1%-5%）的一小部分用作维护和开发后续游戏内容的收费。</font>
+                    </div>
+                    <div><br></div>
+                    <p class="normal"><br></p>
+                    <audio controls="controls" style="display: none;"></audio><audio controls="controls" style="display: none;"></audio><audio controls="controls" style="display: none;"></audio><audio controls="controls" style="display: none;"></audio>
+                    <audio
+                        controls="controls" style="display: none;"></audio><audio controls="controls" style="display: none;"></audio><audio controls="controls" style="display: none;"></audio><audio controls="controls" style="display: none;"></audio></div>
+            </div>
+            <div class="editable-style text-element silex-id-1439555805211-73" data-silex-type="text" data-silex-id="silex-id-1439555805211-73" style="">
+                <div class="silex-element-content normal">
+                    <h1 class="heading1">
+                        <font color="#000000">这是一款什么样的游戏？</font>
+                    </h1>
+                    <div>
+                        <font color="#000000"><br></font>
+                    </div>
+                    <div><span style="color: rgba(0, 0, 0, 0.87); font-family: Lato, &quot;Helvetica Neue&quot;, Arial, Helvetica, sans-serif; font-size: 14px; background-color: rgb(255, 255, 255);">加密剑三（CryptoJX3）是一款互动游戏，任何人都可以在以太坊（Ethereum）区块链上购买和拥有剑侠情缘三游戏中的物品（智能合同 - smart contracts）。一旦你购买一个物品，你将获得这个物品的所有权以及权益。该物品将被打上你独有的标识。</span>
+                        <br
+                            style="box-sizing: inherit; color: rgba(0, 0, 0, 0.87); font-family: Lato, &quot;Helvetica Neue&quot;, Arial, Helvetica, sans-serif; font-size: 14px; background-color: rgb(255, 255, 255);"><br style="box-sizing: inherit; color: rgba(0, 0, 0, 0.87); font-family: Lato, &quot;Helvetica Neue&quot;, Arial, Helvetica, sans-serif; font-size: 14px; background-color: rgb(255, 255, 255);">
+                            <font color="#ff0000"><span style="box-sizing: inherit; font-weight: bolder; font-family: Lato, &quot;Helvetica Neue&quot;, Arial, Helvetica, sans-serif; font-size: 14px; background-color: rgb(255, 255, 255);">请注意！</span><span style="font-family: Lato, &quot;Helvetica Neue&quot;, Arial, Helvetica, sans-serif; font-size: 14px; background-color: rgb(255, 255, 255);">&nbsp;如果其他人想要抢夺你的物品，他们最多将付出您买入价格的两倍。然后您将失去该物品的所有权，但您将收到最多以太坊（ETH）金额的两倍，自动转回您的加密钱包。</span></font>
+                    </div>
+                    <br>
+                    <audio controls="controls" style="display: none;"></audio><audio controls="controls" style="display: none;"></audio><audio controls="controls" style="display: none;"></audio><audio controls="controls" style="display: none;"></audio>
+                    <audio
+                        controls="controls" style="display: none;"></audio>
+                </div>
+            </div>
+            <div class="editable-style text-element silex-id-1520245929328-0" data-silex-type="text" data-silex-id="silex-id-1520245929328-0" style="">
+                <div class="silex-element-content normal">
+                    <h1 class="heading1">
+                        <font color="#000000">收藏的价值和潜在的权益</font>
+                    </h1>
+                    <div>
+                        <font color="#000000"><br></font>
+                    </div>
+                    <div><span style="color: rgba(0, 0, 0, 0.87); font-family: Lato, &quot;Helvetica Neue&quot;, Arial, Helvetica, sans-serif; font-size: 14px; background-color: rgb(255, 255, 255);">在加密剑三（CryptoJX3）购入的物品分为不同等级。我们第一批上线的门派（例如藏剑山庄，七秀坊）就是稀有的一级物品（Tier 1 Item）。</span>
+                        <span
+                            style="background-color: rgb(255, 255, 255); color: rgba(0, 0, 0, 0.87); font-family: Lato, &quot;Helvetica Neue&quot;, Arial, Helvetica, sans-serif; font-size: 14px;">一级物品具有稀有的特性，游戏中只会上线《剑侠情缘网络版叁》中存在的门派。</span><span style="background-color: rgb(255, 255, 255); color: rgba(0, 0, 0, 0.87); font-family: Lato, &quot;Helvetica Neue&quot;, Arial, Helvetica, sans-serif; font-size: 14px;">二级物品包括门派NPC和称号（例如NPC叶英，称号冲虚）。</span></div>
+                    <div><span style="color: rgba(0, 0, 0, 0.87); font-family: Lato, &quot;Helvetica Neue&quot;, Arial, Helvetica, sans-serif; font-size: 14px; background-color: rgb(255, 255, 255);"><br></span></div>
+                    <div>
+                        <font face="Lato, Helvetica Neue, Arial, Helvetica, sans-serif" color="#ff0000"><span style="font-size: 14px; background-color: rgb(255, 255, 255);"><b style="">请注意！</b>一级物品的拥有者，可以获得少量二级物品的交易手续费，而二级物品同样对三级物品具有收益权。</span></font>
+                    </div>
+                    <div><br></div>
+                    <br>
+                    <audio controls="controls" style="display: none;"></audio><audio controls="controls" style="display: none;"></audio><audio controls="controls" style="display: none;"></audio><audio controls="controls" style="display: none;"></audio>
+                    <audio
+                        controls="controls" style="display: none;"></audio><audio controls="controls" style="display: none;"></audio></div>
+            </div>
+            <div class="editable-style text-element silex-id-1520246666548-1" data-silex-type="text" data-silex-id="silex-id-1520246666548-1" style="">
+                <div class="silex-element-content normal">
+                    <h1 class="heading1">
+                        <font color="#000000">路线图</font>
+                    </h1>
+                    <div>
+                        <font color="#000000"><br></font>
+                    </div>
+                    <div>
+                        <font color="#000000">阶段一：CryptoJX3开始启动，提供基本的游戏UI和交易功能。</font>
+                    </div>
+                    <div>
+                        <font color="#000000">阶段二：逐步发布所有的一级可交易物品。提供更丰富的游戏界面。</font>
+                    </div>
+                    <div>
+                        <font color="#000000">阶段三：研发并开放基于一级物品拥有权的二级三级物品市场交易。</font>
+                    </div>
+                    <div>
+                        <font color="#000000">阶段四：研发并开放基于剑三特色和物品拥有权的游戏内容（如宠物养成，RPG游戏）。</font>
+                    </div>
+                    <div>
+                        <font color="#000000">阶段五：研发基于以上内容的可实时交互衍生手游等。</font>
+                    </div>
+                    <div>
+                        <font color="#000000"><br></font>
+                    </div>
+                    <div>
+                        <font color="#ff0000"><b>请注意！</b>所有以上游戏内容中，物品的拥有权都将起到重要作用。</font><span style="color: rgb(255, 0, 0);">此外，团队将寻求与官方的合作，建立一套安全实时以及去中心化的游戏物品交易系统。</span></div>
+                    <div>
+                        <font color="#000000"><br></font>
+                    </div>
+                    <div>
+                        <font color="#000000"><br></font>
+                    </div>
+                    <div>
+                        <font color="#000000"><br></font>
+                    </div>
+                    <div><br></div>
+                    <div><br></div>
+                    <div><br></div>
+                    <div><br></div>
+                    <br>
+                    <audio controls="controls" style="display: none;"></audio><audio controls="controls" style="display: none;"></audio><audio controls="controls" style="display: none;"></audio><audio controls="controls" style="display: none;"></audio>
+                    <audio
+                        controls="controls" style="display: none;"></audio><audio controls="controls" style="display: none;"></audio><audio controls="controls" style="display: none;"></audio><audio controls="controls" style="display: none;"></audio><audio controls="controls" style="display: none;"></audio>
+                        <audio
+                            controls="controls" style="display: none;"></audio>
+                </div>
+            </div>
+            <div class="editable-style text-element silex-id-1520247240485-2" data-silex-type="text" data-silex-id="silex-id-1520247240485-2" style="">
+                <div class="silex-element-content normal">
+                    <h1 class="heading1">
+                        <font color="#000000">最后，我们是谁？</font>
+                    </h1>
+                    <div>
+                        <font color="#000000"><br></font>
+                    </div>
+                    <div>
+                        <font color="#000000">我们是一群热爱区块链技术的剑网叁玩家，喜欢并热爱一切与剑三有关的同人文化。希望将区块链技术带来的独特游戏体验，带到剑三的世界里来。创造比游戏外观更有价值的游戏衍生收藏品。</font>
+                    </div>
+                    <div>
+                        <font color="#000000"><br></font>
+                    </div>
+                    <div>
+                        <font color="#ff0000">此外，如果我们的网站在创建初期采用的网上素材，侵犯了您任何的合法权益，请立即联系我们的团队，我们将即时道歉并更正。我们承诺将会尽快更换所有的素材为原创或者拥有版权的作品。</font>
+                    </div>
+                    <div>
+                        <font color="#000000"><br></font>
+                    </div>
+                    <div>
+                        <font color="#000000"><br></font>
+                    </div>
+                    <div><br></div>
+                    <div><br></div>
+                    <div><br></div>
+                    <div><br></div>
+                    <br>
+                    <audio controls="controls" style="display: none;"></audio><audio controls="controls" style="display: none;"></audio><audio controls="controls" style="display: none;"></audio><audio controls="controls" style="display: none;"></audio>
+                    <audio
+                        controls="controls" style="display: none;"></audio><audio controls="controls" style="display: none;"></audio><audio controls="controls" style="display: none;"></audio><audio controls="controls" style="display: none;"></audio></div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+    <div data-silex-type="container" class="prevent-draggable container-element editable-style silex-id-1484952760464-11 section-element page-documentation paged-element page-learn-backnode" data-silex-id="silex-id-1484952760464-11">
+        <div data-silex-type="container" class="editable-style silex-element-content website-width silex-id-1484952760463-10 silex-container-content container-element prevent-draggable" data-silex-id="silex-id-1484952760463-10">
+            <div data-silex-type="text" class="editable-style silex-id-1484952775498-12 text-element" data-silex-id="silex-id-1484952775498-12">
+                <div class="silex-element-content normal">
+                    <font color="#000000">Waiting for your content here...</font>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div data-silex-type="container" class="prevent-draggable container-element editable-style silex-id-1484951945204-7 section-element" data-silex-id="silex-id-1484951945204-7">
+        <div data-silex-type="container" class="editable-style silex-element-content website-width silex-id-1484951945204-6 silex-container-content container-element prevent-draggable" data-silex-id="silex-id-1484951945204-6">
+            <div class="editable-style text-element silex-id-1439555806543-86" data-silex-type="text" data-silex-id="silex-id-1439555806543-86">
+                <div class="silex-element-content normal">
+                    <h1 style="text-align: center;" class="heading1">更多你想了解的：</h1>
+                    <audio controls="controls" style="display: none;"></audio><audio controls="controls" style="display: none;"></audio></div>
+            </div>
+            <div class="editable-style text-element silex-id-1439555806441-85" data-silex-type="text" data-silex-id="silex-id-1439555806441-85">
+                <div class="silex-element-content normal">
+                    <h2 style="text-align: center;" class="heading2">如何交易</h2>
+                    <audio controls="controls" style="display: none;"></audio></div>
+            </div>
+
+
+
+            <div class="editable-style text-element silex-id-1439555806030-81" data-silex-type="text" data-silex-id="silex-id-1439555806030-81">
+                <div class="silex-element-content normal">
+                    <h2 style="text-align: center;" class="heading2">加入交流群</h2>
+                    <div style="text-align: center; ">@TelegramGroup:</div>
+                    <div style="text-align: center; ">XXXXX</div>
+                    <audio controls="controls" style="display: none;"></audio><audio controls="controls" style="display: none;"></audio><audio controls="controls" style="display: none;"></audio></div>
+            </div>
+            <div class="editable-style text-element silex-id-1439555805927-80" data-silex-type="text" data-silex-id="silex-id-1439555805927-80">
+                <div class="silex-element-content normal">
+                    <h2 style="text-align: center;" class="heading2">加入我们的团队</h2>
+                    <p style="text-align: center;" class="normal">欢迎区块链爱好者加入我们的游戏研发团队，也欢迎美工大触，运营高手等各路神仙。有关商业合作也可联系我们的Telegram。</p>
+                    <audio controls="controls" style="display: none;"></audio></div>
+            </div>
+
+        </div>
+    </div>
+    <div data-silex-type="container" class="prevent-draggable container-element editable-style silex-id-1484952021004-9 section-element" data-silex-id="silex-id-1484952021004-9">
+        <div data-silex-type="container" class="editable-style silex-element-content website-width silex-id-1484952021003-8 silex-container-content container-element prevent-draggable" data-silex-id="silex-id-1484952021003-8">
+            <div data-silex-type="text" class="editable-style text-element silex-id-1439555802805-52" data-silex-id="silex-id-1439555802805-52">
+                <div class="silex-element-content normal">
+                    <p class="normal"></p>
+                    <div style="text-align: center;"><span style="color: rgb(255, 255, 255);">About this website</span>
+                    </div>
+                    <font color="#ffffff">
+                        <div style="text-align: center;"><a href="//www.silex.me/">powered by Silex v2</a> - <a href="https://pages.github.com/">hosted on github pages</a></div>
+                        <div style="text-align: center;">feel free to <a href="https://github.com/silexlabs/silex-templates/">fork and contribute</a></div>
+                    </font>
+                    <p class="normal"></p>
+                    <audio controls="controls" style="display: none;"></audio></div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+
+</html>
